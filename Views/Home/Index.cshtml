@@ -1,0 +1,95 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Imagen Dental - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Fondo y centrado */
+        body {
+            background: #008fcb;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        /* Card del login */
+        .login-card {
+            background: #f7f7f7;
+            border: none;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+            .login-card h1 {
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+                font-weight: 600;
+                color: #333;
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #0069d9;
+            }
+
+        .footer-link {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <img src="~/imagendental.png" class="img-fluid" />
+        <form id="loginForm">
+            <div class="mb-3 text-center">
+                <label for="usuario" class="form-label">Usuario: </label>
+                <input type="text" id="usuario" class="form-control" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="mb-3 text-center">
+                <label for="contrasena" class="form-label">Contraseña: </label>
+                <input type="password" id="contrasena" class="form-control" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const usuario = document.getElementById("usuario").value;
+            const contrasena = document.getElementById("contrasena").value;
+
+            const response = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username: usuario, password: contrasena })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                window.location.href = "/logueado"; // Redirecciona tras un login correcto
+            } else {
+                alert(data.message);  // "Credenciales inválidas"
+            }
+        });
+    </script>
+</body>
+</html>
