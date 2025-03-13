@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,49 +13,102 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/imagenDental.styles.css" asp-append-version="true" />
+    <style>
+        .full-height-row {
+        min-height: 100vh;
+        }
+    </style>
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-soft-blue shadow-sm">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Imagen Dental</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Dashboard">
+                    <img src="~/logopng.png" class="img-fluid" style="max-height: 45px;" alt="Logo" />
+                </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                            <a class="nav-link fs-5 modulos active" asp-area="" asp-controller="Home" asp-action="Clinico">Clínico</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">Doctores</a>
+                            <a class="nav-link fs-5 modulos active" asp-area="" asp-controller="Home" asp-action="Operaciones">Operaciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">RH</a>
+                            <a class="nav-link fs-5 modulos active" asp-area="" asp-controller="Home" asp-action="Calidad">Calidad</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fs-5 modulos active" asp-area="" asp-controller="Home" asp-action="Sistemas">Sistemas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contabilidad</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Admin</a>
+                            <a class="nav-link fs-5 modulos active" asp-area="" asp-controller="Home" asp-action="RH">RH</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+    <main role="main" class="content">
+        <div class="row full-height-row">
+            <aside class="col-md-2 bg-soft-blue">
+                @if (currentAction == "Dashboard")
+                {
+                    <h5 class="text-center mt-2">Bienvenido</h5>
+
+                }
+                @if (currentAction == "Clinico")
+                {
+                    <div class="container">
+                        <ul class="nav flex-column mt-4">
+                            <li class="nav-item"><a class="nav-link text-dark itemSide" href="#">Convenio</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark itemSide" href="#">Presupuesto</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark itemSide" href="#">Alta pacientes</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark itemSide" href="#">Caja</a></li>
+                        </ul>
+                    </div>
+                }
+                @if (currentAction == "Operaciones")
+                {
+
+                }
+                @if (currentAction == "Calidad")
+                {
+                    <ul class="nav flex-column">
+                    </ul>
+                }                
+                @if (currentAction == "RH")
+                {
+
+                }
+                @if (currentAction == "Sistemas")
+                {
+                    <ul class="nav flex-column">
+                    </ul>
+                }
+            </aside>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - imagenDental - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

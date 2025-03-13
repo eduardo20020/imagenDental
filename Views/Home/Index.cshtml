@@ -8,17 +8,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Imagen Dental - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
-        /* Fondo y centrado */
         body {
-            background: #008fcb;
+            background: #66C3E1;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0;
         }
+
+        /* Configuración del body 
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+                */
+            /* Fondo con blur mediante pseudo-elemento 
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('/plan.jpg') no-repeat center center fixed;
+                background-size: cover;
+                filter: blur(5px); 
+                z-index: -1;
+            }*/
+
         /* Card del login */
         .login-card {
             background: #f7f7f7;
@@ -28,6 +52,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
+            z-index: 1; /* Se asegura que el login esté por encima del fondo */
         }
 
             .login-card h1 {
@@ -54,19 +79,18 @@
 </head>
 <body>
     <div class="login-card">
-        <img src="~/imagendental.png" class="img-fluid" />
+        <img src="~/imagendental.png" class="img-fluid" alt="Logo" />
         <form id="loginForm">
-            <div class="mb-3 text-center">
+            <div class="mb-3">
                 <label for="usuario" class="form-label">Usuario: </label>
                 <input type="text" id="usuario" class="form-control" placeholder="Ingresa tu usuario" required>
             </div>
-            <div class="mb-3 text-center">
+            <div class="mb-3">
                 <label for="contrasena" class="form-label">Contraseña: </label>
                 <input type="password" id="contrasena" class="form-control" placeholder="Ingresa tu contraseña" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Ingresar</button>
         </form>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -85,7 +109,7 @@
 
             const data = await response.json();
             if (response.ok) {
-                window.location.href = "/logueado"; // Redirecciona tras un login correcto
+                window.location.href = "/Dashboard"; // Redirecciona tras un login correcto
             } else {
                 alert(data.message);  // "Credenciales inválidas"
             }

@@ -22,8 +22,60 @@ body {
 }
 /* Color azul más suave para el navbar */
 .bg-soft-blue {
-    background-color: #008fcb !important; /* LightSkyBlue */
+    background-color: #66C3E1 !important; /* LightSkyBlue */
 }
 .bg-soft-red {
     background-color: #47c2db !important; /* LightSkyBlue */
 }
+/*
+.pepe:hover {
+    color: #007bff;
+    text-decoration: none; 
+    background-color: #f0f0f0; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+*/
+.modulos {
+    background-color: #4da8c7; /* Azul brillante */
+    border: 1px solid #3a7878; /* Borde azul oscuro */
+    border-radius: 7px; /* Bordes redondeados */
+    padding: 3px 20px; /* Espaciado interno */
+    margin: 5px 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modulos:hover {
+    background-color: #0056b3; /* Azul más oscuro en hover */
+    color: #fff; /* Mantén el texto blanco */
+    transform: scale(1.05); /* Efecto de agrandamiento ligero */
+}
+
+
+.itemSide {
+    background-color: #4da8c7; /* Azul grisáceo profesional */
+    color: #ecf0f1; /* Texto claro */
+    border: 1px solid #34495e; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 6px 20px; /* Espaciado interno cómodo */
+    margin-bottom: 17px; /* Espacio entre elementos */
+    text-align: center; /* Centrar el texto */
+    font-weight: 500; /* Texto más sólido */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: all 0.3s ease; /* Transición suave */
+    text-decoration: none; /* Sin subrayado */
+}
+
+    .itemSide:hover {
+        background-color: #1abc9c; /* Verde turquesa en hover */
+        color: #fff; /* Texto blanco */
+        transform: translateY(-2px); /* Efecto de elevación */
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    }
+
+    .itemSide:active {
+        background-color: #16a085; /* Verde más oscuro al hacer clic */
+        transform: translateY(1px); /* Efecto de hundimiento */
+    }
+
+

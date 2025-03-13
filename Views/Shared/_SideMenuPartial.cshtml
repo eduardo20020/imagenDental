@@ -1,0 +1,58 @@
+﻿@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<div class="p-3">
+    @* Ejemplo de validación por Controller y Action *@
+    @if (currentController == "Home" && currentAction == "Index")
+    {
+        <!-- Menú para la sección "Clínica" -->
+        <h5>Menú Clínica</h5>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Subsección 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Subsección 2</a>
+            </li>
+        </ul>
+    }
+    else if (currentController == "Home" && currentAction == "About")
+    {
+        <!-- Menú para la sección "Operaciones" -->
+        <h5>Menú Operaciones</h5>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Operación A</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Operación B</a>
+            </li>
+        </ul>
+    }
+    else if (currentController == "Home" && currentAction == "Contact")
+    {
+        <!-- Menú para la sección "Calidad" / "RH" / "Sistemas"
+             Aquí podrías hacer más if/else o switch en base a un parámetro adicional si lo deseas -->
+        <h5>Menú Contact (Genérico)</h5>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Submenú 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Submenú 2</a>
+            </li>
+        </ul>
+    }
+    else
+    {
+        <!-- Menú por defecto (por si no coincide nada) -->
+        <h5>Menú por Defecto</h5>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Opción General</a>
+            </li>
+        </ul>
+    }
+</div>

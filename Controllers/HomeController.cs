@@ -23,8 +23,34 @@ public class HomeController : Controller
         return View();
     }
 
-    [HttpGet("logueado")]
-    public IActionResult logueado()
+    [HttpGet("Dashboard")]
+    public IActionResult Dashboard()
+    {
+        return View();
+    }
+
+    [HttpGet("Clinico")]
+    public IActionResult Clinico()
+    {
+        return View();
+    }
+    [HttpGet("Operaciones")]
+    public IActionResult Operaciones()
+    {
+        return View();
+    }
+    [HttpGet("Calidad")]
+    public IActionResult Calidad()
+    {
+        return View();
+    }
+    [HttpGet("RH")]
+    public IActionResult RH()
+    {
+        return View();
+    }
+    [HttpGet("Sistemas")]
+    public IActionResult Sistemas()
     {
         return View();
     }
